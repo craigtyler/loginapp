@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const login = require('../client/login');
 
@@ -5,7 +7,7 @@ const app = express();
 const path = require('path');
 
 
-const port = 3000;
+const port = process.env.PORT;
 //the object that we tell where our URLs go. 
 //index/about.html | index/login.html etc.
 app.use(express.urlencoded({ extended: true }))
@@ -20,7 +22,6 @@ router.use('/login', login);
 router.use(express.static('public'));
 
 app.use('/', router);
-
 
 
 app.listen(port, console.log(`app running on port ${port}`));

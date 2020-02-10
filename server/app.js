@@ -2,12 +2,23 @@ require('dotenv').config();
 
 const express = require('express');
 const login = require('../client/login');
-
+const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 
+const url = 'mongodb://127.0.0.1:27017/users';
+mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology:true});
 
-const port = process.env.PORT;
+const db = mongoose.connection
+db.once('open', _ =>{
+    console.log('db connected', url)
+})
+db.on('error',err => {
+    console.error('connection error:' , err)
+})
+
+
+//const port = process.env.PORT;
 //the object that we tell where our URLs go. 
 //index/about.html | index/login.html etc.
 app.use(express.urlencoded({ extended: true }))
@@ -24,4 +35,4 @@ router.use(express.static('public'));
 app.use('/', router);
 
 
-app.listen(port, console.log(`app running on port ${port}`));
+app.listen(3000, console.log(`app running on port ${3000}`));

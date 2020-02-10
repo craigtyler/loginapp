@@ -1,5 +1,5 @@
 const express = require('express');
-const login = require('../routes/login/login');
+const login = require('../client/login');
 
 const app = express();
 const path = require('path');
@@ -13,10 +13,14 @@ app.use(express.urlencoded({ extended: true }))
 var router = express.Router();
 
 //get for the homepage.
-router.get('/', (req,res) => res.sendFile(path.resolve('./routes/home/index.html')));
+router.get('/', (req,res) => res.sendFile(path.resolve('./webpages/index.html')));
 
 router.use('/login', login);
 
+router.use(express.static('public'));
+
 app.use('/', router);
+
+
 
 app.listen(port, console.log(`app running on port ${port}`));

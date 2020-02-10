@@ -4,12 +4,10 @@ const path = require('path');
 
 //get for the login page
 router.get('/', function(req, res) { 
-    res.sendFile('./login.html', {root: path.resolve('routes/login/')});
+    res.sendFile('/webpages/login.html', {root: path.resolve('./')});
 });
 
-router.use(express.static(path.join(__dirname, '/public')))
-
-console.log(path.join(__dirname, '/public'));
+router.use(express.static('public/login'));
 
 //post for the login page, (submitting the login form)
 router.post('/', function(req, res) { 

@@ -2,16 +2,20 @@
   "name": "testfolder",
   "version": "0.0.1",
   "description": "",
-  "main": "server/app.js",
+  "main": "./server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server/app.js",
+    "start": "node server/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "mongodb": "^3.5.2",
     "mongoose": "^5.8.11",
+    "morgan": "^1.9.1",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
